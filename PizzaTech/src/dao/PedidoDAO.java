@@ -6,6 +6,7 @@
 package dao;
 
 import domain.Pedido;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HBUtil;
@@ -68,5 +69,23 @@ public class PedidoDAO {
         } finally {
             sessao.close();
         }
+    }
+    
+    public void buscarCodigo (Long codigo) {
+        
+        Session sessao = HBUtil.getSessionFactory().openSession();
+        Pedido pedido = null;
+        
+        try {
+            Query consulta = sessao.getNamedQuery("Pedido.findByIdpedido");
+            consulta.setLong("idpedido", codigo);
+            pedido = (Pedido) consulta.uniqueResult();
+        } catch (RuntimeException ex) {
+            throw ex;
+        } finally {
+            sessao.close();
+        }
+        
+        
     }
 }

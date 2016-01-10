@@ -103,4 +103,20 @@ public class ClienteDAO {
             sessao.close();
         }
     }
+    
+    public void buscarCliente (String cliente) {
+        
+        Session sessao = HBUtil.getSessionFactory().openSession();
+        Cliente client = null;
+        
+        try {
+            Query consulta = sessao.getNamedQuery("Cliente.findByNomeClient");
+            consulta.setString("nomeCliente", cliente);
+            client = (Cliente) consulta.uniqueResult();
+        } catch (RuntimeException ex) {
+            throw ex;
+        } finally {
+            sessao.close();
+        }
+    }
 }

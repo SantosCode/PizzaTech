@@ -5,7 +5,7 @@
  */
 package dao;
 
-import domain.Usuario;
+import domain.Produto;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,18 +13,18 @@ import util.HBUtil;
 
 /**
  *
- * @author luis
+ * @author luissantos
  */
-public class UsuarioDAO {
+public class ProdutoDAO {
     
-    public void salvar (Usuario usuario) {
+    public void salvar (Produto produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.save(usuario);
+            sessao.save(produto);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null) {
@@ -35,14 +35,14 @@ public class UsuarioDAO {
         }
     }
     
-    public void editar (Usuario usuario) {
+    public void editar (Produto produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.update(usuario);
+            sessao.update(produto);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null) {
@@ -53,14 +53,14 @@ public class UsuarioDAO {
         }
     }
     
-    public void excluir (Usuario usuario) {
+    public void excluir (Produto produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.delete(usuario);
+            sessao.delete(produto);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null) {
@@ -74,12 +74,12 @@ public class UsuarioDAO {
     public void buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
-        Usuario usuario = null;
+        Produto produto = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Usuario.findByIdusuario");
-            consulta.setLong("idusuario", codigo);
-            usuario = (Usuario) consulta.uniqueResult();
+            Query consulta = sessao.getNamedQuery("Produto.findByIdproduto");
+            consulta.setLong("idproduto", codigo);
+            produto = (Produto) consulta.uniqueResult();
         } catch (RuntimeException ex) {
             throw ex;
         } finally {
@@ -87,20 +87,35 @@ public class UsuarioDAO {
         }
     }
     
-    public void buscarUsuario (String usuario) {
+    public void buscarFab (String fabricante) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
-        Usuario user = null;
+        Produto produto = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Usuario.findByNomeUsuario");
-            consulta.setString("nomeUsuario", usuario);
-            user = (Usuario) consulta.uniqueResult();
+            Query consulta = sessao.getNamedQuery("Produto.findByFabProduto");
+            consulta.setString("fabProduto", fabricante);
+            produto = (Produto) consulta.uniqueResult();
+        } catch (RuntimeException ex) {
+            throw ex;
+        } finally {
+            sessao.close(); 
+        }
+    }
+    
+    public void bucarProd (String produto) {
+        
+        Session sessao = HBUtil.getSessionFactory().openSession();
+        Produto prod = null;
+        
+        try {
+            Query consulta = sessao.getNamedQuery("Produto.findByNomeProduto");
+            consulta.setString("nomeProduto", produto);
+            prod = (Produto) consulta.uniqueResult();
         } catch (RuntimeException ex) {
             throw ex;
         } finally {
             sessao.close();
         }
     }
-    
 }
