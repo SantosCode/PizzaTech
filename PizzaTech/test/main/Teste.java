@@ -17,6 +17,8 @@ public class Teste {
         
         Usuario user = new Usuario();
         user.setNomeUsuario("Luis Carlos");
+        user.setLoginUsuario("rei_luis14");
+        user.setEmailUsuario("luis.santos@nfsconsultoria.com.br");
         user.setSenhaUsuario("Password");
         
         UsuarioDAO userDAO = new UsuarioDAO();

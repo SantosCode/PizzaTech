@@ -24,12 +24,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(catalog = "pizzatech", schema = "", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"nome_usuario"})})
+    @UniqueConstraint(columnNames = {"login_usuario"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
     @NamedQuery(name = "Usuario.findByIdusuario", query = "SELECT u FROM Usuario u WHERE u.idusuario = :idusuario"),
     @NamedQuery(name = "Usuario.findByNomeUsuario", query = "SELECT u FROM Usuario u WHERE u.nomeUsuario = :nomeUsuario"),
+    @NamedQuery(name = "Usuario.findByLoginUsuario", query = "SELECT u FROM Usuario u WHERE u.loginUsuario = :loginUsuario"),
+    @NamedQuery(name = "Usuario.findByEmalUsuario", query = "SELECT u FROM Usuario u WHERE u.emailUsuario = :emailUsuario"),
     @NamedQuery(name = "Usuario.findBySenhaUsuario", query = "SELECT u FROM Usuario u WHERE u.senhaUsuario = :senhaUsuario")})
 public class Usuario implements Serializable {
 
@@ -41,6 +43,10 @@ public class Usuario implements Serializable {
     private Integer idusuario;
     @Column(name = "nome_usuario", length = 45)
     private String nomeUsuario;
+    @Column(name = "login_usuario", length = 45)
+    private String loginUsuario;
+    @Column(name = "email_usuario", length = 50)
+    private String emailUsuario;
     @Column(name = "senha_usuario", length = 45)
     private String senhaUsuario;
 
@@ -65,6 +71,22 @@ public class Usuario implements Serializable {
 
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
+    }
+
+    public String getLoginUsuario() {
+        return loginUsuario;
+    }
+
+    public String getEmailUsuario() {
+        return emailUsuario;
+    }
+
+    public void setEmailUsuario(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
+    }
+
+    public void setLoginUsuario(String loginUsuario) {
+        this.loginUsuario = loginUsuario;
     }
 
     public String getSenhaUsuario() {
