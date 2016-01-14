@@ -16,9 +16,9 @@ public class Teste {
     public static void main(String[] args) {
         
         Usuario user = new Usuario();
-        user.setNomeUsuario("Luis Carlos");
-        user.setLoginUsuario("rei_luis14");
-        user.setEmailUsuario("luis.santos@nfsconsultoria.com.br");
+        user.setNomeUsuario("Marcelo Macedo");
+        user.setLoginUsuario("marcelo.mac");
+        user.setEmailUsuario("marcelo@nfsconsultoria.com.br");
         user.setSenhaUsuario("Password");
         
         UsuarioDAO userDAO = new UsuarioDAO();
