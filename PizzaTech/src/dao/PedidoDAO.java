@@ -12,11 +12,12 @@ import org.hibernate.Transaction;
 import util.HBUtil;
 
 /**
- *
+ *@version 1.0 Release
  * @author luis
  */
 public class PedidoDAO {
     
+    // Metodo para salvar o pedido na tabela
     public void salvar (Pedido pedido) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -35,6 +36,7 @@ public class PedidoDAO {
         }
     }
     
+    // Metodo para editar o pedido na tebela
     public void editar (Pedido pedido) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -53,6 +55,7 @@ public class PedidoDAO {
         }
     }
     
+    // Metodo para excluir o pedido da tabela
     public void excluir (Pedido pedido) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -71,6 +74,7 @@ public class PedidoDAO {
         }
     }
     
+    // Metodo para buscar o ID do pedido na tabela
     public void buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();

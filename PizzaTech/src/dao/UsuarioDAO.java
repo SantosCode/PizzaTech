@@ -17,6 +17,7 @@ import util.HBUtil;
  */
 public class UsuarioDAO {
     
+    // Metodo para salvar o usuario na tabela
     public void salvar (Usuario usuario) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -35,6 +36,7 @@ public class UsuarioDAO {
         }
     }
     
+    // Metodo para editar o usuario na tabela
     public void editar (Usuario usuario) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -53,6 +55,7 @@ public class UsuarioDAO {
         }
     }
     
+    // Metodo para excluir o usuario da tabela
     public void excluir (Usuario usuario) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -71,6 +74,7 @@ public class UsuarioDAO {
         }
     }
     
+    // Metodo para buscar os usuarios pelo ID na tabela
     public void buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -87,6 +91,7 @@ public class UsuarioDAO {
         }
     }
     
+    // Metodo para buscar usuarios pelo nome na tabela.
     public void buscarUsuario (String usuario) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -96,6 +101,23 @@ public class UsuarioDAO {
             Query consulta = sessao.getNamedQuery("Usuario.findByNomeUsuario");
             consulta.setString("nomeUsuario", usuario);
             user = (Usuario) consulta.uniqueResult();
+        } catch (RuntimeException ex) {
+            throw ex;
+        } finally {
+            sessao.close();
+        }
+    }
+    
+    // Metodo para buscar usuarios pelo E-Mail na tabela
+    public void buscarEmail (String email) {
+        
+        Session sessao = HBUtil.getSessionFactory().openSession();
+        Usuario usuario = null;
+        
+        try {
+            Query consulta = sessao.getNamedQuery("Usuario.findByEmalUsuario");
+            consulta.setString("emailUsuario", email);
+            usuario = (Usuario) consulta.uniqueResult();
         } catch (RuntimeException ex) {
             throw ex;
         } finally {

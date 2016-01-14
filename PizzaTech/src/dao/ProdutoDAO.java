@@ -12,11 +12,12 @@ import org.hibernate.Transaction;
 import util.HBUtil;
 
 /**
- *
+ *@version 1.0 Release
  * @author luissantos
  */
 public class ProdutoDAO {
     
+    // Metodo para salvar o produto na tabela
     public void salvar (Produto produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -35,6 +36,7 @@ public class ProdutoDAO {
         }
     }
     
+    // Metodo para editar o produto na tabela
     public void editar (Produto produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -53,6 +55,7 @@ public class ProdutoDAO {
         }
     }
     
+    // Metodo para excluir o produto da tabela
     public void excluir (Produto produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -71,6 +74,7 @@ public class ProdutoDAO {
         }
     }
     
+    // Metodo para buscar o ID do produto na tabela
     public void buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -87,6 +91,7 @@ public class ProdutoDAO {
         }
     }
     
+    // Metodo para buscar o produto pelo fabricante na tabela
     public void buscarFab (String fabricante) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -103,6 +108,7 @@ public class ProdutoDAO {
         }
     }
     
+    // Metodo para buscar o produto pelo nome na tabela
     public void bucarProd (String produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();

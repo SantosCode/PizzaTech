@@ -15,9 +15,11 @@ import util.HBUtil;
 /**
  *
  * @author luissantos
- */
+ * @version 1.0 Release
+ */ 
 public class ClienteDAO {
     
+    // Metodo para salvar os dados na tabela
     public void salvar(Client cliente){
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -36,6 +38,7 @@ public class ClienteDAO {
         }
     }
     
+    // Metodo para editar os dados na tabela
     public void editar(Client cliente) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -54,6 +57,7 @@ public class ClienteDAO {
         }
     }
     
+    // Metodo para excluir os dados da tabela
     public void excluir (Client cliente) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -72,6 +76,7 @@ public class ClienteDAO {
         }
     }
     
+    // Metodo para buscar ID do cliente na tabela
     public void buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -88,6 +93,7 @@ public class ClienteDAO {
         }
     }
     
+    // Metodo para buscar o telefone do cliente na tabela
     public void buscarTel (String telefone) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
@@ -104,6 +110,7 @@ public class ClienteDAO {
         }
     }
     
+    // Metodo para buscar o cliente pelo nome na tabela
     public void buscarCliente (String cliente) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
