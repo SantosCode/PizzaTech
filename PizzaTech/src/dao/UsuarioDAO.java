@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 import util.HBUtil;
 
 /**
- *
+ *@version 1.0 Release
  * @author luis
  */
 public class UsuarioDAO {
