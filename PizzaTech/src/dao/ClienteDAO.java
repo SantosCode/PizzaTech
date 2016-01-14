@@ -5,7 +5,6 @@
  */
 package dao;
 
-import com.sun.security.ntlm.Client;
 import domain.Cliente;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -20,7 +19,7 @@ import util.HBUtil;
 public class ClienteDAO {
     
     // Metodo para salvar os dados na tabela
-    public void salvar(Client cliente){
+    public void salvar(Cliente cliente){
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
@@ -39,7 +38,7 @@ public class ClienteDAO {
     }
     
     // Metodo para editar os dados na tabela
-    public void editar(Client cliente) {
+    public void editar(Cliente cliente) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
@@ -58,7 +57,7 @@ public class ClienteDAO {
     }
     
     // Metodo para excluir os dados da tabela
-    public void excluir (Client cliente) {
+    public void excluir (Cliente cliente) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
