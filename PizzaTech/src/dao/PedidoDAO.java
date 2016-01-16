@@ -89,6 +89,6 @@ public class PedidoDAO {
         } finally {
             sessao.close();
         }
-        return pedido;   
+        return pedido;
     }
 }

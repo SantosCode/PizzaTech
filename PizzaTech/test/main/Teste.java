@@ -13,24 +13,24 @@ import domain.Usuario;
  * @author luissantos
  */
 public class Teste {
-
     public static void main(String[] args) {
-
-        /**
-         * Usuario user = new Usuario(); user.setNomeUsuario("Marcelo Macedo");
-         * user.setLoginUsuario("marcelo.mac");
-         * user.setEmailUsuario("marcelo@nfsconsultoria.com.br");
-         * user.setSenhaUsuario("Password");
-         *
-         * UsuarioDAO userDAO = new UsuarioDAO(); userDAO.salvar(user);
-         */
-        
-        String email = "luis.santos@nfsconsultoria.com.br";
+       /** 
+        Usuario user = new Usuario();
+        user.setNomeUsuario("Marcelo Macedo");
+        user.setLoginUsuario("marcelo.mac");
+        user.setEmailUsuario("marcelo@nfsconsultoria.com.br");
+        user.setSenhaUsuario("Password");
         
         UsuarioDAO userDAO = new UsuarioDAO();
-        Usuario usuario = userDAO.buscarEmail(email);
-        
-        System.out.println(usuario.getNomeUsuario());
-
+        userDAO.salvar(user);
+        */
+       
+       String email = "luis.santos@nfsconsultoria.com.br";
+       UsuarioDAO userDAO = new UsuarioDAO();
+       Usuario user = userDAO.buscarEmail(email);
+       
+        System.out.println("Nome: " +user.getNomeUsuario());
+        System.out.println("E-mail: " +user.getEmailUsuario());
+        System.out.println("Login: " +user.getLoginUsuario());
     }
 }
