@@ -76,7 +76,7 @@ public class ClienteDAO {
     }
     
     // Metodo para buscar ID do cliente na tabela
-    public void buscarCodigo (Long codigo) {
+    public Cliente buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Cliente cliente = null;
@@ -90,10 +90,11 @@ public class ClienteDAO {
         } finally {
             sessao.close();
         }
+        return cliente;
     }
     
     // Metodo para buscar o telefone do cliente na tabela
-    public void buscarTel (String telefone) {
+    public Cliente buscarTel (String telefone) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Cliente cliente = null;
@@ -107,10 +108,11 @@ public class ClienteDAO {
         } finally {
             sessao.close();
         }
+        return cliente;
     }
     
     // Metodo para buscar o cliente pelo nome na tabela
-    public void buscarCliente (String cliente) {
+    public Cliente buscarCliente (String cliente) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Cliente client = null;
@@ -124,5 +126,6 @@ public class ClienteDAO {
         } finally {
             sessao.close();
         }
+        return client;
     }
 }

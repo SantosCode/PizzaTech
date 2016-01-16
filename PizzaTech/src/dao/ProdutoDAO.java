@@ -75,7 +75,7 @@ public class ProdutoDAO {
     }
     
     // Metodo para buscar o ID do produto na tabela
-    public void buscarCodigo (Long codigo) {
+    public Produto buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Produto produto = null;
@@ -89,10 +89,11 @@ public class ProdutoDAO {
         } finally {
             sessao.close();
         }
+        return produto;
     }
     
     // Metodo para buscar o produto pelo fabricante na tabela
-    public void buscarFab (String fabricante) {
+    public Produto buscarFab (String fabricante) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Produto produto = null;
@@ -106,10 +107,11 @@ public class ProdutoDAO {
         } finally {
             sessao.close(); 
         }
+        return produto;
     }
     
     // Metodo para buscar o produto pelo nome na tabela
-    public void bucarProd (String produto) {
+    public Produto bucarProd (String produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Produto prod = null;
@@ -123,5 +125,6 @@ public class ProdutoDAO {
         } finally {
             sessao.close();
         }
+        return prod;
     }
 }
