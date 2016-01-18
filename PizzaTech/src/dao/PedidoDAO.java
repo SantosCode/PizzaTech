@@ -2,11 +2,13 @@
  * Classe com os metodos de gerencia da tabela Pedido
  * Nesta classe estão incluso os metodos:
  * salvar, editar, excluir
+ * Lista todos os pedidos
  * Pesquisa pelo codigo
  */
 package dao;
 
 import domain.Pedido;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -73,6 +75,15 @@ public class PedidoDAO {
         } finally {
             sessao.close();
         }
+    }
+    
+    // Metodo para listar todos os pedidos
+    public List<Pedido> buscarTodos() {
+        
+        Session sessao = HBUtil.getSessionFactory().openSession();
+        Query consulta = sessao.getNamedQuery("Pedido.findAll");
+        List<Pedido> pedidos = consulta.list();
+        return pedidos;
     }
     
     // Metodo para buscar o ID do pedido na tabela

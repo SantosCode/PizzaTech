@@ -2,6 +2,7 @@
  * Classe com os metodos de gerencia da tabela Cliente
  * Nesta classe estão inclusos os métodos:
  * salvar, editar e excluir
+ * Lista todos os clientes
  * Pesquisa pelo codigo
  * Pesquisa pelo telefone
  * Pesuisa pelo nome
@@ -9,6 +10,7 @@
 package dao;
 
 import domain.Cliente;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -76,6 +78,15 @@ public class ClienteDAO {
         } finally {
             sessao.close();
         }
+    }
+    
+    // Metodo para listar todos os clientes
+    public List<Cliente> buscarTodos () {
+        
+        Session sessao = HBUtil.getSessionFactory().openSession();
+        Query consulta = sessao.getNamedQuery("Cliente.findAll");
+        List<Cliente> clientes = consulta.list();
+        return clientes;
     }
     
     // Metodo para buscar ID do cliente na tabela

@@ -2,6 +2,7 @@
  * Classe com os metodos de gerencia da tabela Estoque.
  * Nesta classe estão incluso os metodos:
  * salvar, editar e excluir
+ * Lista todo o estoque
  * Pesquisa pelo codigo
  * Pesquisa pelo fornecedor
  * Pesquisa pelo nome
@@ -9,6 +10,7 @@
 package dao;
 
 import domain.Estoque;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -75,6 +77,15 @@ public class EstoqueDAO {
         } finally {
             sessao.close();
         }
+    }
+    
+    // Metodo para listar todo o estoque
+    public List<Estoque> buscarTodos() {
+        
+        Session sessao = HBUtil.getSessionFactory().openSession();
+        Query consulta = sessao.getNamedQuery("Estoque.findAll");
+        List<Estoque> estoques = consulta.list();
+        return estoques;
     }
     
     // Metodo para buscar o ID do estoque na tabela

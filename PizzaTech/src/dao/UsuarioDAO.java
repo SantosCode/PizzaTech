@@ -2,6 +2,7 @@
  * Classe com os metodos de gerencia da tabela Usuario
  * Nesta classe estão incluso os metodos:
  * salvar, editar, excluir
+ * Lista todos os usuarios
  * Pesquisa por codigo
  * Pesquisa por nome
  * Pesquisa por e-mail
@@ -9,6 +10,7 @@
 package dao;
 
 import domain.Usuario;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -75,6 +77,15 @@ public class UsuarioDAO {
         } finally {
             sessao.close();
         }
+    }
+    
+    // Metodo para listar todos os usuarios
+    public List<Usuario> buscarTodos () {
+        
+        Session sessao = HBUtil.getSessionFactory().openSession();
+        Query consulta = sessao.getNamedQuery("Usuario.findAll");
+        List<Usuario> usuarios = consulta.list();
+        return usuarios;
     }
     
     // Metodo para buscar os usuarios pelo ID na tabela

@@ -2,6 +2,7 @@
  * Classe com os metodos de gerencia da tabela Produto
  * Nesta classe estão incluso os metodos:
  * salvar, editar, excluir
+ * Lista todos os pedidos
  * Pesquisa por codigo
  * Pesquisa por fabricante
  * Pesquisa por nome
@@ -9,6 +10,7 @@
 package dao;
 
 import domain.Produto;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -75,6 +77,15 @@ public class ProdutoDAO {
         } finally {
             sessao.close();
         }
+    }
+    
+    // Metodo para listar todos os pedidos
+    public List<Produto> buscarTodos() {
+        
+        Session sessao = HBUtil.getSessionFactory().openSession();
+        Query consulta = sessao.getNamedQuery("Produto.findAll");
+        List<Produto> produtos = consulta.list();
+        return produtos;
     }
     
     // Metodo para buscar o ID do produto na tabela

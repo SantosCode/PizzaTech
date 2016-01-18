@@ -9,6 +9,8 @@ import dao.EstoqueDAO;
 import dao.UsuarioDAO;
 import domain.Estoque;
 import domain.Usuario;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  *
@@ -16,7 +18,7 @@ import domain.Usuario;
  */
 public class Teste {
     public static void main(String[] args) {
-       /** 
+       /**
         Usuario user = new Usuario();
         user.setNomeUsuario("Marcelo Macedo");
         user.setLoginUsuario("marcelo.mac");
@@ -34,7 +36,7 @@ public class Teste {
         System.out.println("Nome: " +user.getNomeUsuario());
         System.out.println("E-mail: " +user.getEmailUsuario());
         System.out.println("Login: " +user.getLoginUsuario());
-        **/
+       
         
        Estoque estoque = new Estoque();
        estoque.setFabEstoque("Makro");
@@ -43,5 +45,18 @@ public class Teste {
        
         EstoqueDAO estoDAO = new EstoqueDAO();
         estoDAO.salvar(estoque);
+        **/
+       
+        UsuarioDAO userDAO = new UsuarioDAO();
+        List<Usuario> usuario = userDAO.buscarTodos();
+        
+        for (Iterator<Usuario> iterator = usuario.iterator(); iterator.hasNext();) {
+            Usuario next = iterator.next();
+            System.out.println("Codigo: " +next.getIdusuario());
+            System.out.println("Nome: " +next.getNomeUsuario());
+            System.out.println("E-mail: " +next.getEmailUsuario());
+            System.out.println("Login: " +next.getLoginUsuario());
+            System.out.println("--------------------------------");
+        }
     }
 }
