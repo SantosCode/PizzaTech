@@ -3,9 +3,9 @@
   <persistence-unit name="PizzaTechPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>domain.Pedido</class>
-    <class>domain.Produto</class>
     <class>domain.Cliente</class>
     <class>domain.Usuario</class>
+    <class>domain.Estoque</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.200.6:3306/pizzatech?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="aptech"/>

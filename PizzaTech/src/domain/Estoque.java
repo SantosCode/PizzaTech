@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Produto.findByNomeProduto", query = "SELECT p FROM Produto p WHERE p.nomeProduto = :nomeProduto"),
     @NamedQuery(name = "Produto.findByFabProduto", query = "SELECT p FROM Produto p WHERE p.fabProduto = :fabProduto"),
     @NamedQuery(name = "Produto.findByQtProduto", query = "SELECT p FROM Produto p WHERE p.qtProduto = :qtProduto")})
-public class Produto implements Serializable {
+public class Estoque implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,10 +45,10 @@ public class Produto implements Serializable {
     @Column(name = "qt_produto")
     private Integer qtProduto;
 
-    public Produto() {
+    public Estoque() {
     }
 
-    public Produto(Integer idproduto) {
+    public Estoque(Integer idproduto) {
         this.idproduto = idproduto;
     }
 
@@ -94,10 +94,10 @@ public class Produto implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Produto)) {
+        if (!(object instanceof Estoque)) {
             return false;
         }
-        Produto other = (Produto) object;
+        Estoque other = (Estoque) object;
         if ((this.idproduto == null && other.idproduto != null) || (this.idproduto != null && !this.idproduto.equals(other.idproduto))) {
             return false;
         }
