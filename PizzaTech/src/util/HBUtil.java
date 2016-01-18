@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Classe de utilitario para manipulação do Framework Hibernate 4.3
  */
 package util;
 
@@ -9,8 +7,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 
 /**
- * Hibernate Utility class with a convenient method to get Session Factory
- * object.
+ * Classe Hibernate Utilitario para obter a fabrica de sessão
  *
  * @author luissantos
  */
@@ -20,11 +17,10 @@ public class HBUtil {
     
     static {
         try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
+            // Cria a fabrica de sessão para o arquivo (hibernate.cfg.xml) 
             sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
         } catch (Throwable ex) {
-            // Log the exception. 
+            // Gera o Log de excessão. 
             System.err.println("Falha ao criar a conexão" + ex);
             throw new ExceptionInInitializerError(ex);
         }
