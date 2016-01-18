@@ -75,7 +75,7 @@ public class UsuarioDAO {
     }
     
     // Metodo para buscar os usuarios pelo ID na tabela
-    public void buscarCodigo (Long codigo) {
+    public Usuario buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Usuario usuario = null;
@@ -89,10 +89,11 @@ public class UsuarioDAO {
         } finally {
             sessao.close();
         }
+        return usuario;
     }
     
     // Metodo para buscar usuarios pelo nome na tabela.
-    public void buscarUsuario (String usuario) {
+    public Usuario buscarUsuario (String usuario) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Usuario user = null;
@@ -106,10 +107,11 @@ public class UsuarioDAO {
         } finally {
             sessao.close();
         }
+        return user;
     }
     
     // Metodo para buscar usuarios pelo E-Mail na tabela
-    public void buscarEmail (String email) {
+    public Usuario buscarEmail (String email) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Usuario usuario = null;
@@ -123,6 +125,7 @@ public class UsuarioDAO {
         } finally {
             sessao.close();
         }
+        return usuario;
     }
     
 }

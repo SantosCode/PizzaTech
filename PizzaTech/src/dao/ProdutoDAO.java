@@ -5,28 +5,27 @@
  */
 package dao;
 
-import domain.Cliente;
+import domain.Produto;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HBUtil;
 
 /**
- *
+ *@version 1.0 Release
  * @author luissantos
- * @version 1.0 Release
- */ 
-public class ClienteDAO {
+ */
+public class ProdutoDAO {
     
-    // Metodo para salvar os dados na tabela
-    public void salvar(Cliente cliente){
+    // Metodo para salvar o produto na tabela
+    public void salvar (Produto produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.save(cliente);
+            sessao.save(produto);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null) {
@@ -37,15 +36,15 @@ public class ClienteDAO {
         }
     }
     
-    // Metodo para editar os dados na tabela
-    public void editar(Cliente cliente) {
+    // Metodo para editar o produto na tabela
+    public void editar (Produto produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.update(cliente);
+            sessao.update(produto);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null) {
@@ -56,15 +55,15 @@ public class ClienteDAO {
         }
     }
     
-    // Metodo para excluir os dados da tabela
-    public void excluir (Cliente cliente) {
+    // Metodo para excluir o produto da tabela
+    public void excluir (Produto produto) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.delete(cliente);
+            sessao.delete(produto);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null) {
@@ -75,57 +74,54 @@ public class ClienteDAO {
         }
     }
     
-    // Metodo para buscar ID do cliente na tabela
-    public Cliente buscarCodigo (Long codigo) {
+    // Metodo para buscar o ID do produto na tabela
+    public void buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
-        Cliente cliente = null;
+        Produto produto = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Cliente.findByIdcliente");
-            consulta.setLong("idcliente", codigo);
-            cliente = (Cliente) consulta.uniqueResult();
-        } catch (RuntimeException ex) {
-          throw ex;
-        } finally {
-            sessao.close();
-        }
-        return cliente;
-    }
-    
-    // Metodo para buscar o telefone do cliente na tabela
-    public Cliente buscarTel (String telefone) {
-        
-        Session sessao = HBUtil.getSessionFactory().openSession();
-        Cliente cliente = null;
-        
-        try {
-            Query consulta = sessao.getNamedQuery("Cliente.findByTelCliente");
-            consulta.setString("telCliente", telefone);
-            cliente = (Cliente) consulta.uniqueResult();
+            Query consulta = sessao.getNamedQuery("Produto.findByIdproduto");
+            consulta.setLong("idproduto", codigo);
+            produto = (Produto) consulta.uniqueResult();
         } catch (RuntimeException ex) {
             throw ex;
         } finally {
             sessao.close();
         }
-        return cliente;
     }
     
-    // Metodo para buscar o cliente pelo nome na tabela
-    public Cliente buscarCliente (String cliente) {
+    // Metodo para buscar o produto pelo fornecedor na tabela
+    public void buscarFab (String fabricante) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
-        Cliente client = null;
+        Produto produto = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Cliente.findByNomeClient");
-            consulta.setString("nomeCliente", cliente);
-            client = (Cliente) consulta.uniqueResult();
+            Query consulta = sessao.getNamedQuery("Produto.findByFabProduto");
+            consulta.setString("fabProduto", fabricante);
+            produto = (Produto) consulta.uniqueResult();
+        } catch (RuntimeException ex) {
+            throw ex;
+        } finally {
+            sessao.close(); 
+        }
+    }
+    
+    // Metodo para buscar o produto pelo nome na tabela
+    public void bucarProd (String produto) {
+        
+        Session sessao = HBUtil.getSessionFactory().openSession();
+        Produto prod = null;
+        
+        try {
+            Query consulta = sessao.getNamedQuery("Produto.findByNomeProduto");
+            consulta.setString("nomeProduto", produto);
+            prod = (Produto) consulta.uniqueResult();
         } catch (RuntimeException ex) {
             throw ex;
         } finally {
             sessao.close();
         }
-        return client;
     }
 }

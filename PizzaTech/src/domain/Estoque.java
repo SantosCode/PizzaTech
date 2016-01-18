@@ -25,11 +25,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(catalog = "pizzatech", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Produto.findAll", query = "SELECT p FROM Produto p"),
-    @NamedQuery(name = "Produto.findByIdproduto", query = "SELECT p FROM Produto p WHERE p.idproduto = :idproduto"),
-    @NamedQuery(name = "Produto.findByNomeProduto", query = "SELECT p FROM Produto p WHERE p.nomeProduto = :nomeProduto"),
-    @NamedQuery(name = "Produto.findByFabProduto", query = "SELECT p FROM Produto p WHERE p.fabProduto = :fabProduto"),
-    @NamedQuery(name = "Produto.findByQtProduto", query = "SELECT p FROM Produto p WHERE p.qtProduto = :qtProduto")})
+    @NamedQuery(name = "Estoque.findAll", query = "SELECT p FROM Estoque p"),
+    @NamedQuery(name = "Estoque.findByIdpestoque", query = "SELECT p FROM Estoque p WHERE p.idpestoque = :idpestoque"),
+    @NamedQuery(name = "Estoque.findByNomeEstoque", query = "SELECT p FROM Estoque p WHERE p.nomeEstoque = :nomeEstoque"),
+    @NamedQuery(name = "Estoque.findByFabEstoque", query = "SELECT p FROM Estoque p WHERE p.fabEstoque = :fabEstoque"),
+    @NamedQuery(name = "Estoque.findByQtEstoque", query = "SELECT p FROM Estoque p WHERE p.qtEstoque = :qtEstoque")})
 public class Estoque implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,57 +37,57 @@ public class Estoque implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(nullable = false)
-    private Integer idproduto;
-    @Column(name = "nome_produto", length = 45)
-    private String nomeProduto;
-    @Column(name = "fab_produto", length = 45)
-    private String fabProduto;
-    @Column(name = "qt_produto")
-    private Integer qtProduto;
+    private Integer idpestoque;
+    @Column(name = "nome_pestoque", length = 45)
+    private String nomeEstoque;
+    @Column(name = "fab_pestoque", length = 45)
+    private String fabEstoque;
+    @Column(name = "qt_pestoque")
+    private Integer qtEstoque;
 
     public Estoque() {
     }
 
-    public Estoque(Integer idproduto) {
-        this.idproduto = idproduto;
+    public Estoque(Integer idpestoque) {
+        this.idpestoque = idpestoque;
     }
 
-    public Integer getIdproduto() {
-        return idproduto;
+    public Integer getIdpestoque() {
+        return idpestoque;
     }
 
-    public void setIdproduto(Integer idproduto) {
-        this.idproduto = idproduto;
+    public void setIdpestoque(Integer idpestoque) {
+        this.idpestoque = idpestoque;
     }
 
-    public String getNomeProduto() {
-        return nomeProduto;
+    public String getNomeEstoque() {
+        return nomeEstoque;
     }
 
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+    public void setNomeEstoque(String nomeEstoque) {
+        this.nomeEstoque = nomeEstoque;
     }
 
-    public String getFabProduto() {
-        return fabProduto;
+    public String getFabEstoque() {
+        return fabEstoque;
     }
 
-    public void setFabProduto(String fabProduto) {
-        this.fabProduto = fabProduto;
+    public void setFabEstoque(String fabEstoque) {
+        this.fabEstoque = fabEstoque;
     }
 
-    public Integer getQtProduto() {
-        return qtProduto;
+    public Integer getQtEstoque() {
+        return qtEstoque;
     }
 
-    public void setQtProduto(Integer qtProduto) {
-        this.qtProduto = qtProduto;
+    public void setQtEstoque(Integer qtEstoque) {
+        this.qtEstoque = qtEstoque;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idproduto != null ? idproduto.hashCode() : 0);
+        hash += (idpestoque != null ? idpestoque.hashCode() : 0);
         return hash;
     }
 
@@ -98,7 +98,7 @@ public class Estoque implements Serializable {
             return false;
         }
         Estoque other = (Estoque) object;
-        if ((this.idproduto == null && other.idproduto != null) || (this.idproduto != null && !this.idproduto.equals(other.idproduto))) {
+        if ((this.idpestoque == null && other.idpestoque != null) || (this.idpestoque != null && !this.idpestoque.equals(other.idpestoque))) {
             return false;
         }
         return true;
@@ -106,7 +106,7 @@ public class Estoque implements Serializable {
 
     @Override
     public String toString() {
-        return "domain.Produto[ idproduto=" + idproduto + " ]";
+        return "domain.Estoque[ idpestoque=" + idpestoque + " ]";
     }
     
 }

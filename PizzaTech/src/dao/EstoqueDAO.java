@@ -17,15 +17,15 @@ import util.HBUtil;
  */
 public class EstoqueDAO {
     
-    // Metodo para salvar o produto na tabela
-    public void salvar (Estoque produto) {
+    // Metodo para salvar o estoque na tabela
+    public void salvar (Estoque estoque) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.save(produto);
+            sessao.save(estoque);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null) {
@@ -36,15 +36,15 @@ public class EstoqueDAO {
         }
     }
     
-    // Metodo para editar o produto na tabela
-    public void editar (Estoque produto) {
+    // Metodo para editar o estoque na tabela
+    public void editar (Estoque estoque) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.update(produto);
+            sessao.update(estoque);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null) {
@@ -55,15 +55,15 @@ public class EstoqueDAO {
         }
     }
     
-    // Metodo para excluir o produto da tabela
-    public void excluir (Estoque produto) {
+    // Metodo para excluir o estoque da tabela
+    public void excluir (Estoque estoque) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Transaction transacao = null;
         
         try {
             transacao = sessao.beginTransaction();
-            sessao.delete(produto);
+            sessao.delete(estoque);
             transacao.commit();
         } catch (RuntimeException ex) {
             if (transacao != null) {
@@ -74,16 +74,16 @@ public class EstoqueDAO {
         }
     }
     
-    // Metodo para buscar o ID do produto na tabela
+    // Metodo para buscar o ID do estoque na tabela
     public void buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
-        Estoque produto = null;
+        Estoque estoque = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Produto.findByIdproduto");
-            consulta.setLong("idproduto", codigo);
-            produto = (Estoque) consulta.uniqueResult();
+            Query consulta = sessao.getNamedQuery("Estoque.findByIdestoque");
+            consulta.setLong("idestoque", codigo);
+            estoque = (Estoque) consulta.uniqueResult();
         } catch (RuntimeException ex) {
             throw ex;
         } finally {
@@ -91,16 +91,16 @@ public class EstoqueDAO {
         }
     }
     
-    // Metodo para buscar o produto pelo fabricante na tabela
+    // Metodo para buscar o estoque pelo fabricante na tabela
     public void buscarFab (String fabricante) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
-        Estoque produto = null;
+        Estoque estoque = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Produto.findByFabProduto");
-            consulta.setString("fabProduto", fabricante);
-            produto = (Estoque) consulta.uniqueResult();
+            Query consulta = sessao.getNamedQuery("Estoque.findByFabEstoque");
+            consulta.setString("fabEstoque", fabricante);
+            estoque = (Estoque) consulta.uniqueResult();
         } catch (RuntimeException ex) {
             throw ex;
         } finally {
@@ -108,15 +108,15 @@ public class EstoqueDAO {
         }
     }
     
-    // Metodo para buscar o produto pelo nome na tabela
-    public void bucarProd (String produto) {
+    // Metodo para buscar o estoque pelo nome na tabela
+    public void bucarProd (String estoque) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Estoque prod = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Produto.findByNomeProduto");
-            consulta.setString("nomeProduto", produto);
+            Query consulta = sessao.getNamedQuery("Estoque.findByNomeEstoque");
+            consulta.setString("nomeEstoque", estoque);
             prod = (Estoque) consulta.uniqueResult();
         } catch (RuntimeException ex) {
             throw ex;

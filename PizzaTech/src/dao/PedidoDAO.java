@@ -75,7 +75,7 @@ public class PedidoDAO {
     }
     
     // Metodo para buscar o ID do pedido na tabela
-    public void buscarCodigo (Long codigo) {
+    public Pedido buscarCodigo (Long codigo) {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Pedido pedido = null;
@@ -89,7 +89,6 @@ public class PedidoDAO {
         } finally {
             sessao.close();
         }
-        
-        
+        return pedido;
     }
 }

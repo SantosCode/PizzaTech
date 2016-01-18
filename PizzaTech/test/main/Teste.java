@@ -14,7 +14,7 @@ import domain.Usuario;
  */
 public class Teste {
     public static void main(String[] args) {
-        
+       /** 
         Usuario user = new Usuario();
         user.setNomeUsuario("Marcelo Macedo");
         user.setLoginUsuario("marcelo.mac");
@@ -23,6 +23,14 @@ public class Teste {
         
         UsuarioDAO userDAO = new UsuarioDAO();
         userDAO.salvar(user);
-        
+        */
+       
+       String email = "luis.santos@nfsconsultoria.com.br";
+       UsuarioDAO userDAO = new UsuarioDAO();
+       Usuario user = userDAO.buscarEmail(email);
+       
+        System.out.println("Nome: " +user.getNomeUsuario());
+        System.out.println("E-mail: " +user.getEmailUsuario());
+        System.out.println("Login: " +user.getLoginUsuario());
     }
 }
