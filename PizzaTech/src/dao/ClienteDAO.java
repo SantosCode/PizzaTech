@@ -1,7 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Classe com os metodos de gerencia da tabela Cliente
+ * Nesta classe estão inclusos os métodos:
+ * salvar, editar e excluir
+ * Pesquisa pelo codigo
+ * Pesquisa pelo telefone
+ * Pesuisa pelo nome
  */
 package dao;
 

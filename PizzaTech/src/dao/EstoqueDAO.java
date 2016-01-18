@@ -1,8 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * Classe com os metodos de gerencia da tabela Estoque.
+ * Nesta classe estão incluso os metodos:
+ * salvar, editar e excluir
+ * Pesquisa pelo codigo
+ * Pesquisa pelo fornecedor
+ * Pesquisa pelo nome
+*/
 package dao;
 
 import domain.Estoque;
