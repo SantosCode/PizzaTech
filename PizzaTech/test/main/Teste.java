@@ -5,7 +5,9 @@
  */
 package main;
 
+import dao.EstoqueDAO;
 import dao.UsuarioDAO;
+import domain.Estoque;
 import domain.Usuario;
 
 /**
@@ -23,7 +25,7 @@ public class Teste {
         
         UsuarioDAO userDAO = new UsuarioDAO();
         userDAO.salvar(user);
-        */
+        
        
        String email = "luis.santos@nfsconsultoria.com.br";
        UsuarioDAO userDAO = new UsuarioDAO();
@@ -32,5 +34,14 @@ public class Teste {
         System.out.println("Nome: " +user.getNomeUsuario());
         System.out.println("E-mail: " +user.getEmailUsuario());
         System.out.println("Login: " +user.getLoginUsuario());
+        **/
+        
+       Estoque estoque = new Estoque();
+       estoque.setFabEstoque("Makro");
+       estoque.setNomeEstoque("Toamte");
+       estoque.setQtEstoque(70);
+       
+        EstoqueDAO estoDAO = new EstoqueDAO();
+        estoDAO.salvar(estoque);
     }
 }
