@@ -36,6 +36,8 @@ public class Pedido implements Serializable {
     private String produtoPedido;
     @Column(name = "entrega_pedido")
     private Boolean entregaPedido;
+    @Column(name = "valor_pedido")
+    private Double valorPedido;
     @JoinColumn(name = "cliente_idcliente", referencedColumnName = "idcliente", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Cliente cliente;
@@ -73,6 +75,14 @@ public class Pedido implements Serializable {
 
     public void setEntregaPedido(Boolean entregaPedido) {
         this.entregaPedido = entregaPedido;
+    }
+
+    public Double getValorPedido() {
+        return valorPedido;
+    }
+
+    public void setValorPedido(Double valorPedido) {
+        this.valorPedido = valorPedido;
     }
 
     public Cliente getCliente() {
