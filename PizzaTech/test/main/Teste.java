@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Teste {
     public static void main(String[] args) {
-       /**
+       
         Usuario user = new Usuario();
         user.setNomeUsuario("Marcelo Macedo");
         user.setLoginUsuario("marcelo.mac");
@@ -28,7 +28,7 @@ public class Teste {
         UsuarioDAO userDAO = new UsuarioDAO();
         userDAO.salvar(user);
         
-       
+       /**
        String email = "luis.santos@nfsconsultoria.com.br";
        UsuarioDAO userDAO = new UsuarioDAO();
        Usuario user = userDAO.buscarEmail(email);
@@ -45,7 +45,7 @@ public class Teste {
        
         EstoqueDAO estoDAO = new EstoqueDAO();
         estoDAO.salvar(estoque);
-        **/
+        
        
         UsuarioDAO userDAO = new UsuarioDAO();
         List<Usuario> usuario = userDAO.buscarTodos();
@@ -57,6 +57,7 @@ public class Teste {
             System.out.println("E-mail: " +next.getEmailUsuario());
             System.out.println("Login: " +next.getLoginUsuario());
             System.out.println("--------------------------------");
-        }
+            * */
+        
     }
 }
