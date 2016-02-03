@@ -84,8 +84,8 @@ public class ProdutoDAO {
     public List<Produto> buscarTodos() {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
-        //Query consulta = sessao.getNamedQuery("Produto.findAll");
-        Criteria consulta = sessao.createCriteria(Produto.class);
+        Query consulta = sessao.getNamedQuery("Produto.findAll");
+        //Criteria consulta = sessao.createCriteria(Produto.class);
         List<Produto> produtos = consulta.list();
         return produtos;
     }

@@ -7,12 +7,9 @@ package dao;
 
 import domain.Produto;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -20,29 +17,11 @@ import static org.junit.Assert.*;
  */
 public class ProdutoDAOTest {
     
-    public ProdutoDAOTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
     /**
      * Test of salvar method, of class ProdutoDAO.
      */
     @Test
+    @Ignore
     public void testSalvar() {
         System.out.println("salvar");
         Produto produto = null;
@@ -56,6 +35,7 @@ public class ProdutoDAOTest {
      * Test of editar method, of class ProdutoDAO.
      */
     @Test
+    @Ignore
     public void testEditar() {
         System.out.println("editar");
         Produto produto = null;
@@ -69,6 +49,7 @@ public class ProdutoDAOTest {
      * Test of excluir method, of class ProdutoDAO.
      */
     @Test
+    @Ignore
     public void testExcluir() {
         System.out.println("excluir");
         Produto produto = null;
@@ -96,6 +77,7 @@ public class ProdutoDAOTest {
      * Test of buscarCodigo method, of class ProdutoDAO.
      */
     @Test
+    @Ignore
     public void testBuscarCodigo() {
         System.out.println("buscarCodigo");
         Long codigo = null;
@@ -111,6 +93,7 @@ public class ProdutoDAOTest {
      * Test of buscarFab method, of class ProdutoDAO.
      */
     @Test
+    @Ignore
     public void testBuscarFab() {
         System.out.println("buscarFab");
         String fabricante = "";
@@ -126,6 +109,7 @@ public class ProdutoDAOTest {
      * Test of bucarProd method, of class ProdutoDAO.
      */
     @Test
+    @Ignore
     public void testBucarProd() {
         System.out.println("bucarProd");
         String produto = "";
