@@ -11,6 +11,7 @@ package dao;
 
 import domain.Produto;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -83,7 +84,8 @@ public class ProdutoDAO {
     public List<Produto> buscarTodos() {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
-        Query consulta = sessao.getNamedQuery("Produto.findAll");
+        //Query consulta = sessao.getNamedQuery("Produto.findAll");
+        Criteria consulta = sessao.createCriteria(Produto.class);
         List<Produto> produtos = consulta.list();
         return produtos;
     }

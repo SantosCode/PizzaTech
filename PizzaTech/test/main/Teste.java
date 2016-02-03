@@ -6,11 +6,15 @@
 package main;
 
 import dao.EstoqueDAO;
+import dao.ProdutoDAO;
 import dao.UsuarioDAO;
 import domain.Estoque;
+import domain.Produto;
 import domain.Usuario;
 import java.util.Iterator;
 import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  *
@@ -18,7 +22,7 @@ import java.util.List;
  */
 public class Teste {
     public static void main(String[] args) {
-       
+       /**
         Usuario user = new Usuario();
         user.setNomeUsuario("Marcelo Macedo");
         user.setLoginUsuario("marcelo.mac");
@@ -58,6 +62,12 @@ public class Teste {
             System.out.println("Login: " +next.getLoginUsuario());
             System.out.println("--------------------------------");
             * */
-        
+        System.out.println("buscarTodos");
+        ProdutoDAO instance = new ProdutoDAO();
+        List<Produto> expResult = null;
+        List<Produto> result = instance.buscarTodos();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 }
