@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Classe de persistencia da tabela Fabricante criado pelo Framework JPA 2.1
  */
 package domain;
 
@@ -18,8 +16,8 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author luis
+ *@version 1.0 Release
+ * @author luissantos
  */
 @Entity
 @Table(catalog = "pizzatech", schema = "")

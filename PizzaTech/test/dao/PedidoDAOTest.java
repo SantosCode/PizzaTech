@@ -5,92 +5,51 @@
  */
 package dao;
 
+import domain.Cliente;
 import domain.Pedido;
 import domain.Produto;
-import java.util.Collection;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
  * @author luis
  */
 public class PedidoDAOTest {
-  
+
     /**
      * Test of salvar method, of class PedidoDAO.
      */
     @Test
     public void testSalvar() {
         System.out.println("salvar");
+        
+        // Adiciona produtos na lista buscando o produto pelo nome
         ProdutoDAO produtoDAO = new ProdutoDAO();
-        //Produto produto = produtoDAO.bucarProd("Suco de Uva");
-        //Collection<Produto> produto = produtoDAO.bucarProd("Suco de Uva");
+        List<Produto> produto = new ArrayList<>();
+        produto.add(produtoDAO.bucarProd("Suco de Uva"));
+        
+        // Adiciona cliente buscando pelo telefone
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente cliente = clienteDAO.buscarTel("(11) 4106-3383");
+        
+        // Adiciona data atual
+        Timestamp data = new Timestamp(System.currentTimeMillis());
+        Timestamp date = new Timestamp(data.getTime());
+        Date dataHoje = new Date(date.getTime());
+        
+        // Adiciona o pedido
         Pedido pedido = new Pedido();
-        //pedido.setProduto(produto);
+        pedido.setProduto(produto);
+        pedido.setCliente(cliente);
+        pedido.setValorPedido(new BigDecimal(50.80));
+        pedido.setEntregaPedido(false);
+        pedido.setDataPedido(dataHoje);
         PedidoDAO instance = new PedidoDAO();
         instance.salvar(pedido);
     }
-
-    /**
-     * Test of editar method, of class PedidoDAO.
-     */
-    @Test
-    @Ignore
-    public void testEditar() {
-        System.out.println("editar");
-        Pedido pedido = null;
-        PedidoDAO instance = new PedidoDAO();
-        instance.editar(pedido);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of excluir method, of class PedidoDAO.
-     */
-    @Test
-    @Ignore
-    public void testExcluir() {
-        System.out.println("excluir");
-        Pedido pedido = null;
-        PedidoDAO instance = new PedidoDAO();
-        instance.excluir(pedido);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buscarTodos method, of class PedidoDAO.
-     */
-    @Test
-    @Ignore
-    public void testBuscarTodos() {
-        System.out.println("buscarTodos");
-        PedidoDAO instance = new PedidoDAO();
-        List<Pedido> expResult = null;
-        List<Pedido> result = instance.buscarTodos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of buscarCodigo method, of class PedidoDAO.
-     */
-    @Test
-    @Ignore
-    public void testBuscarCodigo() {
-        System.out.println("buscarCodigo");
-        Long codigo = null;
-        PedidoDAO instance = new PedidoDAO();
-        Pedido expResult = null;
-        Pedido result = instance.buscarCodigo(codigo);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
