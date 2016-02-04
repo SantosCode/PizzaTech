@@ -5,9 +5,7 @@
  */
 package dao;
 
-import domain.Fabricante;
-import domain.Produto;
-import java.math.BigDecimal;
+import domain.Cliente;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -17,111 +15,108 @@ import org.junit.Ignore;
  *
  * @author luis
  */
-public class ProdutoDAOTest {
-    
+public class ClienteDAOTest {
+   
     /**
-     * Test of salvar method, of class ProdutoDAO.
+     * Test of salvar method, of class ClienteDAO.
      */
     @Test
     public void testSalvar() {
         System.out.println("salvar");
-        FabricanteDAO fabricanteDAO = new FabricanteDAO();
-        Fabricante fabricante = fabricanteDAO.buscarFabricante("Dell Valle");
-        Produto produto = new Produto();
-        produto.setFabricante(fabricante);
-        produto.setNomeProduto("Suco de Uva");
-        produto.setPrecoProduto(new BigDecimal(2.30));
-        produto.setQtProduto(40);
-        ProdutoDAO instance = new ProdutoDAO();
-        instance.salvar(produto);
+        Cliente cliente = new Cliente();
+        cliente.setNomeCliente("Luis Carlos");
+        cliente.setTelCliente("(11) 4106-3383");
+        cliente.setEndCliente("Rua Fernando Abrel, 34, São Paulo");
+        ClienteDAO instance = new ClienteDAO();
+        instance.salvar(cliente);
     }
 
     /**
-     * Test of editar method, of class ProdutoDAO.
+     * Test of editar method, of class ClienteDAO.
      */
     @Test
     @Ignore
     public void testEditar() {
         System.out.println("editar");
-        Produto produto = null;
-        ProdutoDAO instance = new ProdutoDAO();
-        instance.editar(produto);
+        Cliente cliente = null;
+        ClienteDAO instance = new ClienteDAO();
+        instance.editar(cliente);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of excluir method, of class ProdutoDAO.
+     * Test of excluir method, of class ClienteDAO.
      */
     @Test
     @Ignore
     public void testExcluir() {
         System.out.println("excluir");
-        Produto produto = null;
-        ProdutoDAO instance = new ProdutoDAO();
-        instance.excluir(produto);
+        Cliente cliente = null;
+        ClienteDAO instance = new ClienteDAO();
+        instance.excluir(cliente);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of buscarTodos method, of class ProdutoDAO.
+     * Test of buscarTodos method, of class ClienteDAO.
      */
     @Test
     @Ignore
     public void testBuscarTodos() {
         System.out.println("buscarTodos");
-        ProdutoDAO instance = new ProdutoDAO();
-        List<Produto> expResult = null;
-        List<Produto> result = instance.buscarTodos();
+        ClienteDAO instance = new ClienteDAO();
+        List<Cliente> expResult = null;
+        List<Cliente> result = instance.buscarTodos();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of buscarCodigo method, of class ProdutoDAO.
+     * Test of buscarCodigo method, of class ClienteDAO.
      */
     @Test
     @Ignore
     public void testBuscarCodigo() {
         System.out.println("buscarCodigo");
         Long codigo = null;
-        ProdutoDAO instance = new ProdutoDAO();
-        Produto expResult = null;
-        Produto result = instance.buscarCodigo(codigo);
+        ClienteDAO instance = new ClienteDAO();
+        Cliente expResult = null;
+        Cliente result = instance.buscarCodigo(codigo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of buscarFab method, of class ProdutoDAO.
+     * Test of buscarTel method, of class ClienteDAO.
      */
     @Test
     @Ignore
-    public void testBuscarFab() {
-        System.out.println("buscarFab");
-        String fabricante = "";
-        ProdutoDAO instance = new ProdutoDAO();
-        Produto expResult = null;
-        Produto result = instance.buscarFab(fabricante);
+    public void testBuscarTel() {
+        System.out.println("buscarTel");
+        String telefone = "";
+        ClienteDAO instance = new ClienteDAO();
+        Cliente expResult = null;
+        Cliente result = instance.buscarTel(telefone);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of bucarProd method, of class ProdutoDAO.
+     * Test of buscarCliente method, of class ClienteDAO.
      */
     @Test
     @Ignore
-    public void testBucarProd() {
-        System.out.println("bucarProd");
-        String produto = "";
-        ProdutoDAO instance = new ProdutoDAO();
-        Produto expResult = null;
-        Produto result = instance.bucarProd(produto);
+    public void testBuscarCliente() {
+        System.out.println("buscarCliente");
+        String cliente = "";
+        ClienteDAO instance = new ClienteDAO();
+        Cliente expResult = null;
+        Cliente result = instance.buscarCliente(cliente);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

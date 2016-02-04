@@ -9,11 +9,12 @@
     <property name="hibernate.connection.password">Aptech2016</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
-    <property name="hibernate.hbm2ddl.auto">create-drop</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="domain.Cliente"/>
     <mapping class="domain.Pedido"/>
-    <mapping class="domain.PedidoPK"/>
     <mapping class="domain.Produto"/>
     <mapping class="domain.Usuario"/>
+    <mapping class="domain.Fabricante"/>
+    <mapping class="domain.Estoque"/>
   </session-factory>
 </hibernate-configuration>

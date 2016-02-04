@@ -6,6 +6,7 @@
     <class>domain.Cliente</class>
     <class>domain.Usuario</class>
     <class>domain.Estoque</class>
+    <class>domain.Fabricante</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://192.168.200.6:3306/pizzatech?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="aptech"/>

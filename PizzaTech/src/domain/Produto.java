@@ -4,12 +4,15 @@
 package domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -24,10 +27,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Produto.findAll", query = "SELECT p FROM Produto p"),
-    @NamedQuery(name = "Produto.findByIdpproduto", query = "SELECT p FROM Produto p WHERE p.idpproduto = :idpproduto"),
+    @NamedQuery(name = "Produto.findByIdproduto", query = "SELECT p FROM Produto p WHERE p.idproduto = :idproduto"),
     @NamedQuery(name = "Produto.findByNomeProduto", query = "SELECT p FROM Produto p WHERE p.nomeProduto = :nomeProduto"),
-    @NamedQuery(name = "Produto.findByFabProduto", query = "SELECT p FROM Produto p WHERE p.fabProduto = :fabProduto"),
     @NamedQuery(name = "Produto.findByPrecoProduto", query = "SELECT p FROM Produto p WHERE p.precoProduto = :precoProduto"),
+    @NamedQuery(name = "Produto.findByIdFabricante", query = "SELECT p FROM Produto p WHERE p.fabricante.idfabricante = :idfabricante"),
     @NamedQuery(name = "Produto.findByQtProduto", query = "SELECT p FROM Produto p WHERE p.qtProduto = :qtProduto")})
 public class Produto implements Serializable {
 
@@ -36,29 +39,34 @@ public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(nullable = false)
-    private Integer idpproduto;
+    private Long idproduto;
+    
     @Column(name = "nome_pproduto", length = 45)
     private String nomeProduto;
-    @Column(name = "fab_pproduto", length = 45)
-    private String fabProduto;
-    @Column(name = "preco_produto", length = 10)
-    private Double precoProduto;
+    
+    @Column(name = "preco_produto", precision = 6, scale = 2)
+    private BigDecimal precoProduto;
+    
     @Column(name = "qt_pproduto")
     private Integer qtProduto;
+    
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "fab_produto")
+    private Fabricante fabricante;
 
     public Produto() {
     }
 
-    public Produto(Integer idpproduto) {
-        this.idpproduto = idpproduto;
+    public Produto(Long idproduto) {
+        this.idproduto = idproduto;
     }
 
-    public Integer getIdpproduto() {
-        return idpproduto;
+    public Long getIdproduto() {
+        return idproduto;
     }
 
-    public void setIdpproduto(Integer idpproduto) {
-        this.idpproduto = idpproduto;
+    public void setIdproduto(Long idproduto) {
+        this.idproduto = idproduto;
     }
 
     public String getNomeProduto() {
@@ -69,19 +77,19 @@ public class Produto implements Serializable {
         this.nomeProduto = nomeProduto;
     }
 
-    public String getFabProduto() {
-        return fabProduto;
+    public Fabricante getFabricante() {
+        return fabricante;
     }
 
-    public void setFabProduto(String fabProduto) {
-        this.fabProduto = fabProduto;
+    public void setFabricante(Fabricante fabricante) {
+        this.fabricante = fabricante;
     }
 
-    public Double getPrecoProduto() {
+    public BigDecimal getPrecoProduto() {
         return precoProduto;
     }
 
-    public void setPrecoProduto(Double precoProduto) {
+    public void setPrecoProduto(BigDecimal precoProduto) {
         this.precoProduto = precoProduto;
     }
 
@@ -96,7 +104,7 @@ public class Produto implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idpproduto != null ? idpproduto.hashCode() : 0);
+        hash += (idproduto != null ? idproduto.hashCode() : 0);
         return hash;
     }
 
@@ -107,7 +115,7 @@ public class Produto implements Serializable {
             return false;
         }
         Produto other = (Produto) object;
-        if ((this.idpproduto == null && other.idpproduto != null) || (this.idpproduto != null && !this.idpproduto.equals(other.idpproduto))) {
+        if ((this.idproduto == null && other.idproduto != null) || (this.idproduto != null && !this.idproduto.equals(other.idproduto))) {
             return false;
         }
         return true;
@@ -115,7 +123,7 @@ public class Produto implements Serializable {
 
     @Override
     public String toString() {
-        return "domain.Produto[ idpproduto=" + idpproduto + " ]";
+        return "domain.Produto[ idproduto=" + idproduto + " ]";
     }
     
 }

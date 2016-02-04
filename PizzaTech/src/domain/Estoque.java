@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -24,9 +26,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Estoque.findAll", query = "SELECT p FROM Estoque p"),
-    @NamedQuery(name = "Estoque.findByIdpestoque", query = "SELECT p FROM Estoque p WHERE p.idpestoque = :idpestoque"),
+    @NamedQuery(name = "Estoque.findByIdestoque", query = "SELECT p FROM Estoque p WHERE p.idestoque = :idestoque"),
     @NamedQuery(name = "Estoque.findByNomeEstoque", query = "SELECT p FROM Estoque p WHERE p.nomeEstoque = :nomeEstoque"),
-    @NamedQuery(name = "Estoque.findByFabEstoque", query = "SELECT p FROM Estoque p WHERE p.fabEstoque = :fabEstoque"),
+    @NamedQuery(name = "Estoque.findByFabricante", query = "SELECT p FROM Estoque p WHERE p.fabricante.idfabricante = :idfabricante"),
     @NamedQuery(name = "Estoque.findByQtEstoque", query = "SELECT p FROM Estoque p WHERE p.qtEstoque = :qtEstoque")})
 public class Estoque implements Serializable {
 
@@ -35,27 +37,31 @@ public class Estoque implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(nullable = false)
-    private Integer idpestoque;
-    @Column(name = "nome_pestoque", length = 45)
+    private Long idestoque;
+    
+    @Column(name = "nome_estoque", length = 45)
     private String nomeEstoque;
-    @Column(name = "fab_pestoque", length = 45)
-    private String fabEstoque;
-    @Column(name = "qt_pestoque")
+    
+    @Column(name = "qt_estoque")
     private Integer qtEstoque;
+    
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "fab_estoque")
+    private Fabricante fabricante;
 
     public Estoque() {
     }
 
-    public Estoque(Integer idpestoque) {
-        this.idpestoque = idpestoque;
+    public Estoque(Long idpestoque) {
+        this.idestoque = idpestoque;
     }
 
-    public Integer getIdpestoque() {
-        return idpestoque;
+    public Long getIdpestoque() {
+        return idestoque;
     }
 
-    public void setIdpestoque(Integer idpestoque) {
-        this.idpestoque = idpestoque;
+    public void setIdpestoque(Long idpestoque) {
+        this.idestoque = idpestoque;
     }
 
     public String getNomeEstoque() {
@@ -66,12 +72,12 @@ public class Estoque implements Serializable {
         this.nomeEstoque = nomeEstoque;
     }
 
-    public String getFabEstoque() {
-        return fabEstoque;
+    public Fabricante getFabricante() {
+        return fabricante;
     }
 
-    public void setFabEstoque(String fabEstoque) {
-        this.fabEstoque = fabEstoque;
+    public void setFabricante(Fabricante fabricante) {
+        this.fabricante = fabricante;
     }
 
     public Integer getQtEstoque() {
@@ -85,7 +91,7 @@ public class Estoque implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idpestoque != null ? idpestoque.hashCode() : 0);
+        hash += (idestoque != null ? idestoque.hashCode() : 0);
         return hash;
     }
 
@@ -96,7 +102,7 @@ public class Estoque implements Serializable {
             return false;
         }
         Estoque other = (Estoque) object;
-        if ((this.idpestoque == null && other.idpestoque != null) || (this.idpestoque != null && !this.idpestoque.equals(other.idpestoque))) {
+        if ((this.idestoque == null && other.idestoque != null) || (this.idestoque != null && !this.idestoque.equals(other.idestoque))) {
             return false;
         }
         return true;
@@ -104,7 +110,7 @@ public class Estoque implements Serializable {
 
     @Override
     public String toString() {
-        return "domain.Estoque[ idpestoque=" + idpestoque + " ]";
+        return "domain.Estoque[ idpestoque=" + idestoque + " ]";
     }
     
 }

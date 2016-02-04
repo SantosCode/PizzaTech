@@ -11,7 +11,6 @@ package dao;
 
 import domain.Produto;
 import java.util.List;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -85,7 +84,6 @@ public class ProdutoDAO {
         
         Session sessao = HBUtil.getSessionFactory().openSession();
         Query consulta = sessao.getNamedQuery("Produto.findAll");
-        //Criteria consulta = sessao.createCriteria(Produto.class);
         List<Produto> produtos = consulta.list();
         return produtos;
     }
@@ -115,8 +113,8 @@ public class ProdutoDAO {
         Produto produto = null;
         
         try {
-            Query consulta = sessao.getNamedQuery("Produto.findByFabProduto");
-            consulta.setString("fabProduto", fabricante);
+            Query consulta = sessao.getNamedQuery("Produto.findByIdFabricante");
+            consulta.setString("idfabricante", fabricante);
             produto = (Produto) consulta.uniqueResult();
         } catch (RuntimeException ex) {
             throw ex;
