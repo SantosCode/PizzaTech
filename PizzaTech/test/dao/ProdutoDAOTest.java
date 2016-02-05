@@ -30,9 +30,9 @@ public class ProdutoDAOTest {
         // Adicona o produto
         Produto produto = new Produto();
         produto.setFabricante(fabricante);
-        produto.setNomeProduto("Sudo de Laranja");
-        produto.setPrecoProduto(new BigDecimal(2.30));
-        produto.setQtProduto(40);
+        produto.setNomeProduto("Sudo de Maracuja");
+        produto.setPrecoProduto(new BigDecimal(2.50));
+        produto.setQtProduto(20);
         ProdutoDAO instance = new ProdutoDAO();
         instance.salvar(produto);
     }

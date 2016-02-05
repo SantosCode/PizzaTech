@@ -23,7 +23,7 @@ public class FabricanteDAOTest {
         
         // Adiciona fabricante
         Fabricante fabricante = new Fabricante();
-        fabricante.setDescriFab("Carrefour");
+        fabricante.setDescriFab("Pizzatech");
         FabricanteDAO instance = new FabricanteDAO();
         instance.salvar(fabricante);
     }
