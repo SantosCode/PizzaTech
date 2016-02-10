@@ -5,15 +5,17 @@ package domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,6 +26,8 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *@version 1.0 Release
@@ -61,8 +65,11 @@ public class Pedido implements Serializable {
     private Cliente cliente;
     
     @OneToMany
-    @Cascade(CascadeType.ALL)
-    private Collection<Produto> produto;
+    @JoinTable(name = "Produtos_Pedido", 
+                   joinColumns = @JoinColumn(name = "Pedido_idpedido", unique = false),
+                   inverseJoinColumns = @JoinColumn(name = "Produto_idproduto",unique = false))
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<Produto> produto;
 
     public Pedido() {
     }
@@ -86,11 +93,11 @@ public class Pedido implements Serializable {
         this.dataPedido = dataPedido;
     }
 
-    public Collection<Produto> getProduto() {
+    public List<Produto> getProduto() {
         return produto;
     }
 
-    public void setProduto(Collection<Produto> produto) {
+    public void setProduto(List<Produto> produto) {
         this.produto = produto;
     }
 

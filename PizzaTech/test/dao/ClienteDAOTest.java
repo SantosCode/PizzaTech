@@ -23,8 +23,8 @@ public class ClienteDAOTest {
         
         // Adiciona Cliente
         Cliente cliente = new Cliente();
-        cliente.setNomeCliente("Luis carlos");
-        cliente.setTelCliente("(11) 4106-3383");
+        cliente.setNomeCliente("Fernada Souza");
+        cliente.setTelCliente("(11) 3224-7070");
         cliente.setEndCliente("Rua Fernando Abrel, 34, São Paulo");
         ClienteDAO instance = new ClienteDAO();
         instance.salvar(cliente);

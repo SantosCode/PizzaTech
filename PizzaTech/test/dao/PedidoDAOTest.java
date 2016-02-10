@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import org.junit.Test;
 
 /**
@@ -30,10 +31,10 @@ public class PedidoDAOTest {
 
         // Adiciona produtos na lista buscando o produto pelo nome
         ProdutoDAO produtoDAO = new ProdutoDAO();
-        Collection<Produto> produto = new ArrayList<>();
+        List<Produto> produto = new ArrayList<>();
         produto.add(produtoDAO.buscarCodigo(1L));
         produto.add(produtoDAO.buscarCodigo(2L));
-        produto.add(produtoDAO.buscarCodigo(3L));
+        //produto.add(produtoDAO.buscarCodigo(3L));
 
         // Adiciona cliente buscando pelo telefone
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -48,7 +49,7 @@ public class PedidoDAOTest {
         try {
         Pedido pedido = new Pedido();
         pedido.setCliente(cliente);
-        pedido.setValorPedido(new BigDecimal(40.60));
+        pedido.setValorPedido(new BigDecimal(8.20));
         pedido.setEntregaPedido(false);
         pedido.setDataPedido(dataHoje);
         pedido.setProduto(produto);

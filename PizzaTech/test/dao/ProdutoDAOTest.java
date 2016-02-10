@@ -31,7 +31,7 @@ public class ProdutoDAOTest {
         Produto produto = new Produto();
         produto.setFabricante(fabricante);
         produto.setNomeProduto("Sudo de Maracuja");
-        produto.setPrecoProduto(new BigDecimal(2.50));
+        produto.setPrecoProduto(new BigDecimal(2.80));
         produto.setQtProduto(20);
         ProdutoDAO instance = new ProdutoDAO();
         instance.salvar(produto);
