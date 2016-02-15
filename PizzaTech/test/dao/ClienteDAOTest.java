@@ -6,6 +6,7 @@
 package dao;
 
 import domain.Cliente;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -18,6 +19,7 @@ public class ClienteDAOTest {
      * Test of salvar method, of class ClienteDAO.
      */
     @Test
+    @Ignore
     public void testSalvar() {
         System.out.println("salvar");
         
@@ -28,5 +30,14 @@ public class ClienteDAOTest {
         cliente.setEndCliente("Rua Fernando Abrel, 34, São Paulo");
         ClienteDAO instance = new ClienteDAO();
         instance.salvar(cliente);
+    }
+    
+    @Test
+    public void excluir() {
+        
+        // Exclui Cliente
+        ClienteDAO clienteDAO = new ClienteDAO();
+        Cliente cliente = clienteDAO.buscarCodigo(3L);
+        clienteDAO.excluir(cliente);
     }
 }

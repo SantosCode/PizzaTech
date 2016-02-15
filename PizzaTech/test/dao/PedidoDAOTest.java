@@ -13,7 +13,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -26,6 +28,7 @@ public class PedidoDAOTest {
      * Test of salvar method, of class PedidoDAO.
      */
     @Test
+    @Ignore
     public void testSalvar() {
         System.out.println("salvar");
 
@@ -33,12 +36,15 @@ public class PedidoDAOTest {
         ProdutoDAO produtoDAO = new ProdutoDAO();
         List<Produto> produto = new ArrayList<>();
         produto.add(produtoDAO.buscarCodigo(1L));
+        produto.add(produtoDAO.buscarCodigo(1L));
+        produto.add(produtoDAO.buscarCodigo(1L));
         produto.add(produtoDAO.buscarCodigo(2L));
-        //produto.add(produtoDAO.buscarCodigo(3L));
+        produto.add(produtoDAO.buscarCodigo(3L));
+        produto.add(produtoDAO.buscarCodigo(4L));
 
         // Adiciona cliente buscando pelo telefone
         ClienteDAO clienteDAO = new ClienteDAO();
-        Cliente cliente = clienteDAO.buscarTel("(11) 3224-7070");
+        Cliente cliente = clienteDAO.buscarTel("(11) 4106-3383");
 
         // Adiciona data atual
         Timestamp data = new Timestamp(System.currentTimeMillis());
@@ -60,5 +66,22 @@ public class PedidoDAOTest {
             System.out.println(ex);
         }
         
+    }
+    
+    @Test
+    public void listarPedidos() {
+        
+        PedidoDAO pedidoDAO = new PedidoDAO();
+        List<Pedido> pedido = pedidoDAO.buscarTodos();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        
+        for (Iterator<Pedido> iterator = pedido.iterator(); iterator.hasNext();) {
+            Pedido next = iterator.next();
+            System.out.println("IdPedido: " +next.getIdpedido() + 
+                    " Data: " +next.getDataPedido() + 
+                    " Valor: " +next.getValorPedido() +
+                    " Cliente: " +next.getCliente().getNomeCliente() +
+                    " Produtos: " +next.getProduto());
+        }
     }
 }
